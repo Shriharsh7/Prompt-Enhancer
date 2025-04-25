@@ -28,27 +28,22 @@ export function PromptEnhancer() {
     try {
       if (isRefinement) {
         // If we're refining, use the refine endpoint
+        console.log("Refining prompt. Current refinement count:", 
+          conversation.filter(msg => msg.type === 'bot').length);
+          
         const result = await api.refinePrompt(
           currentPrompt,
           input,
           conversation.filter(msg => msg.type === 'bot').length
         );
         
+        console.log("Refinement result:", result);
+        
+        // Add the new refined prompt to the conversation
         setCurrentPrompt(result.refined_prompt);
         
-        // Update the conversation by replacing the last bot message
-        setConversation(prev => {
-          const newConversation = [...prev];
-          const lastBotIndex = newConversation.map(m => m.type).lastIndexOf('bot');
-          
-          if (lastBotIndex !== -1) {
-            newConversation[lastBotIndex] = { type: 'bot', text: result.refined_prompt };
-          } else {
-            newConversation.push({ type: 'bot', text: result.refined_prompt });
-          }
-          
-          return newConversation;
-        });
+        // Add the refined bot message to the conversation
+        setConversation(prev => [...prev, { type: 'bot', text: result.refined_prompt }]);
       } else {
         // Otherwise, generate a new prompt
         const result = await api.generatePrompt(input, template);
