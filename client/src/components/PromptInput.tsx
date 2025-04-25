@@ -36,22 +36,22 @@ export function PromptInput({
   };
 
   return (
-    <div className="p-4 bg-white border-t border-gray-200">
+    <div className="p-4 bg-slate-900 border-t border-slate-800">
       <TextareaAutoSize
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyPress}
         placeholder={isRefinement ? "Add more context or details to refine your prompt..." : "Enter your rough prompt idea..."}
-        className="w-full p-3 border rounded-md mb-2 focus:border-primary-500 focus:ring-primary-500"
+        className="w-full p-3 border border-slate-700 rounded-md mb-3 bg-slate-800 text-slate-200 focus:border-blue-500 focus:ring-blue-500 placeholder:text-slate-500"
         disabled={isLoadingPrompt}
         minRows={2}
         maxRows={5}
       />
-      <div className="flex gap-2">
+      <div className="flex gap-3">
         <Button
           onClick={handleSubmit}
           disabled={!input.trim() || isLoadingPrompt}
-          className="w-full"
+          className={`w-full gradient-orange text-white font-medium ${isLoadingPrompt ? 'opacity-70' : 'hover:opacity-90'}`}
           variant="default"
         >
           {isLoadingPrompt ? (
@@ -80,8 +80,8 @@ export function PromptInput({
           <Button
             onClick={onTest}
             disabled={isLoadingTest || isLoadingPrompt}
-            className="w-full"
-            variant="secondary"
+            className={`w-full gradient-blue text-white font-medium ${(isLoadingTest || isLoadingPrompt) ? 'opacity-70' : 'hover:opacity-90'}`}
+            variant="default"
           >
             {isLoadingTest ? (
               <>

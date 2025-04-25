@@ -29,13 +29,13 @@ export function Message({ message, isLatestBotMessage }: MessageProps) {
         className={cn(
           "max-w-[80%] rounded-lg p-3 my-1.5 whitespace-pre-wrap",
           isUser 
-            ? "bg-primary-100 text-primary-900" 
-            : "bg-white border border-gray-200 shadow-sm"
+            ? "bg-blue-900/40 border border-blue-800 text-blue-50" 
+            : "dark-card shadow-md"
         )}
       >
         <div className={cn(
           "text-sm",
-          message.type === 'bot' ? "font-mono" : ""
+          message.type === 'bot' ? "font-mono text-slate-300" : "text-blue-100"
         )}>
           {message.text}
         </div>
@@ -45,7 +45,7 @@ export function Message({ message, isLatestBotMessage }: MessageProps) {
             <Button 
               variant="ghost" 
               size="sm" 
-              className="h-7 px-2 text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+              className="h-7 px-2 text-xs text-blue-400 hover:text-blue-300 hover:bg-slate-800"
               onClick={() => copyToClipboard(message.text)}
               disabled={copied}
             >
@@ -72,10 +72,10 @@ export function Message({ message, isLatestBotMessage }: MessageProps) {
 export function MessageLoadingIndicator() {
   return (
     <div className="flex justify-start w-full">
-      <div className="bg-white shadow-sm p-4 rounded-lg border border-gray-200 flex items-center space-x-2">
-        <span className="inline-block w-2 h-2 bg-primary-400 rounded-full animate-bounce"></span>
-        <span className="inline-block w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></span>
-        <span className="inline-block w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></span>
+      <div className="dark-card p-4 rounded-lg flex items-center space-x-2">
+        <span className="inline-block w-2 h-2 bg-blue-400 rounded-full animate-bounce"></span>
+        <span className="inline-block w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></span>
+        <span className="inline-block w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></span>
       </div>
     </div>
   );

@@ -15,17 +15,17 @@ export function ResponseSection({ response, isLoadingResponse, className }: Resp
 
   return (
     <div className={`flex flex-col h-full ${className}`}>
-      <div className="bg-white p-4 border-b border-gray-200">
-        <h2 className="text-lg font-medium text-gray-900">Gemini Response</h2>
-        <p className="text-sm text-gray-500">See how Gemini responds to your enhanced prompt</p>
+      <div className="bg-slate-900 p-4 border-b border-slate-800">
+        <h2 className="text-lg font-medium text-blue-300">Gemini Response</h2>
+        <p className="text-sm text-slate-400">See how Gemini responds to your enhanced prompt</p>
       </div>
       
-      <div className="flex-1 p-4 bg-gray-50 overflow-y-auto">
+      <div className="flex-1 p-4 bg-slate-950 overflow-y-auto">
         {isLoadingResponse ? (
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary-200 border-t-primary-600"></div>
-              <p className="mt-2 text-sm text-gray-600">Generating response...</p>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-blue-800 border-t-blue-400"></div>
+              <p className="mt-2 text-sm text-slate-400">Generating response...</p>
             </div>
           </div>
         ) : response ? (
@@ -33,9 +33,9 @@ export function ResponseSection({ response, isLoadingResponse, className }: Resp
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+            className="dark-card rounded-lg p-4"
           >
-            <pre className="whitespace-pre-wrap text-sm overflow-x-auto font-sans">
+            <pre className="whitespace-pre-wrap text-sm overflow-x-auto font-sans text-slate-300">
               {response}
             </pre>
             <div className="flex justify-end mt-4">
@@ -44,7 +44,7 @@ export function ResponseSection({ response, isLoadingResponse, className }: Resp
                 size="sm"
                 onClick={() => copyToClipboard(response)}
                 disabled={copied}
-                className="text-xs"
+                className="text-xs bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white"
               >
                 {copied ? (
                   <>
@@ -63,11 +63,11 @@ export function ResponseSection({ response, isLoadingResponse, className }: Resp
         ) : (
           <div className="h-full flex items-center justify-center">
             <div className="text-center max-w-md">
-              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-gray-100">
-                <Bot className="h-6 w-6 text-gray-400" />
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-slate-800">
+                <Bot className="h-6 w-6 text-blue-400" />
               </div>
-              <h3 className="mt-2 text-sm font-medium text-gray-900">No response yet</h3>
-              <p className="mt-1 text-sm text-gray-500">
+              <h3 className="mt-2 text-sm font-medium text-blue-300">No response yet</h3>
+              <p className="mt-1 text-sm text-slate-400">
                 Generate an enhanced prompt first, then test it with Gemini to see the response.
               </p>
             </div>

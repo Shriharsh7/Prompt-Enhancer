@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { PromptEnhancer } from "@/components/PromptEnhancer";
 import NotFound from "@/pages/not-found";
+import { useEffect } from "react";
 
 function Router() {
   return (
@@ -16,11 +17,18 @@ function Router() {
 }
 
 function App() {
+  // Set dark mode permanently
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        <div className="min-h-screen bg-slate-950 text-slate-100">
+          <Router />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

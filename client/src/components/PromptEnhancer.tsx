@@ -93,19 +93,19 @@ export function PromptEnhancer() {
 
   return (
     <div className="flex flex-col h-screen">
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <WandSparkles className="text-primary-500 h-5 w-5" />
-            <h1 className="text-lg font-semibold">Prompt Enhancer</h1>
+            <WandSparkles className="text-blue-400 h-5 w-5" />
+            <h1 className="text-xl font-semibold text-gradient">Prompt Enhancer</h1>
           </div>
           <div>
-            <span className="text-xs text-gray-500 hidden sm:inline">Powered by Gemini 2.0 Flash</span>
+            <span className="text-xs text-slate-400 hidden sm:inline">Powered by Gemini 2.0 Flash</span>
           </div>
         </div>
       </header>
       
-      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-950">
         <ChatSection
           conversation={conversation}
           template={template}
