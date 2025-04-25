@@ -27,24 +27,26 @@ export function TemplateSelector({ value, onChange, disabled = false }: Template
 
   return (
     <div className="space-y-1">
-      <label className="text-sm font-medium text-gray-700">Template Style:</label>
+      <label className="text-sm font-medium text-blue-300">Template Style:</label>
       <Select 
         value={value} 
         onValueChange={handleValueChange}
         disabled={disabled}
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full bg-slate-800 border-slate-700 text-slate-200 focus:ring-blue-500 focus:ring-offset-slate-900">
           <SelectValue placeholder="Select a template style" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-slate-800 border-slate-700 text-slate-200">
           <SelectGroup>
             {Object.entries(templateLabels).map(([key, label]) => (
-              <SelectItem key={key} value={key}>{label}</SelectItem>
+              <SelectItem key={key} value={key} className="hover:bg-slate-700 focus:bg-slate-700 focus:text-slate-100">
+                {label}
+              </SelectItem>
             ))}
           </SelectGroup>
         </SelectContent>
       </Select>
-      <p className="text-xs text-gray-500 mt-1">
+      <p className="text-xs text-slate-400 mt-1">
         Select the type of prompt you want to generate
       </p>
     </div>
